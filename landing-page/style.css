@@ -517,55 +517,89 @@ section {
   background: var(--light-color);
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+.project-main {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.project-card {
+.project-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
   background: var(--contentB);
   border-radius: var(--card-radius);
-  overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: var(--transition);
 }
 
-.project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
-
-.project-image {
-  background: linear-gradient(135deg, var(--themeC), var(--secondary-color));
-  padding: 3rem;
-  text-align: center;
-}
-
-.project-icon {
+.project-icon-main {
   font-size: 4rem;
+  color: white;
+  background: linear-gradient(135deg, var(--themeC), var(--secondary-color));
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(72, 45, 255, 0.3);
 }
 
-.project-content {
+.project-header h3 {
+  font-size: 1.8rem;
+  color: var(--headC);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.project-description {
+  font-size: 1.1rem;
+  color: var(--bodyCa);
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.project-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-item {
+  background: var(--contentB);
   padding: 1.5rem;
+  border-radius: var(--card-radius);
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  transition: var(--transition);
+  border: 2px solid transparent;
 }
 
-.project-content h3 {
-  font-size: 1.3rem;
+.feature-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--themeC);
+  box-shadow: 0 8px 25px rgba(72, 45, 255, 0.15);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  color: var(--themeC);
+  margin-bottom: 1rem;
+}
+
+.feature-item h4 {
+  font-size: 1.1rem;
   color: var(--headC);
   margin-bottom: 0.5rem;
   font-weight: 700;
 }
 
-.project-content p {
+.feature-item p {
+  font-size: 14px;
   color: var(--bodyCa);
-  margin-bottom: 1rem;
   line-height: 1.6;
-}
-
-.projects p {
-  font-size: 20px;
-  text-align: center;
+  margin: 0;
 }
 
 /* Footer */
