@@ -187,37 +187,7 @@ textarea {
   line-height: normal;
 }
 
-input::placeholder {
-  color: rgba(0, 0, 0, 0.5);
-}
 
-iframe {
-  max-width: 100%;
-  border: 0;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-table {
-  border-spacing: 0;
-}
-
-.hidden {
-  display: none;
-}
-
-.invisible {
-  visibility: hidden;
-}
-
-.clear {
-  width: 100%;
-  display: block;
-  margin: 0;
-  padding: 0;
-  float: none;
-  clear: both;
-}
 
 .container {
   max-width: var(--contentW);
@@ -540,31 +510,7 @@ section {
   font-size: 14px;
 }
 
-.description {
-  font-size: 0.9rem;
-  color: var(--bodyCa);
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
 
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.social-link {
-  font-size: 1.5rem;
-  text-decoration: none;
-  transition: var(--transition);
-  color: var(--themeC);
-}
-
-.social-link:hover {
-  transform: scale(1.2);
-  opacity: 0.8;
-  color: var(--secondary-color);
-}
 
 /* Projects Section */
 .projects {
@@ -617,48 +563,9 @@ section {
   line-height: 1.6;
 }
 
-.project-tags {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.tag {
-  background: var(--light-color);
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  color: var(--themeC);
-  font-weight: 500;
-}
-
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.info-icon {
-  font-size: 2rem;
-  background: linear-gradient(135deg, var(--themeC), var(--secondary-color));
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.info-text h4 {
-  color: var(--headC);
-  margin-bottom: 0.3rem;
-  font-weight: 700;
-}
-
-.info-text p {
-  color: var(--bodyCa);
-  font-size: 14px;
+.projects p {
+  font-size: 20px;
+  text-align: center;
 }
 
 /* Footer */
@@ -747,14 +654,10 @@ section {
   }
 }
 
+
 @media (max-width: 480px) {
   .hero-content h1 {
     font-size: 1.5rem;
-  }
-
-  .about-content,
-  .contact-content {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -768,32 +671,4 @@ section {
 .animate-on-scroll.animated {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Utility Classes */
-.fCls {
-  display: block;
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  right: -50%;
-  bottom: -50%;
-  z-index: 1;
-  transition: var(--trans-1);
-  background: transparent;
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* Text Alignment */
-.text-center {
-  text-align: center;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-right {
-  text-align: right;
 }
