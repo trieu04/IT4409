@@ -286,6 +286,18 @@ textarea {
   transition: var(--transition);
 }
 
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
 /* Hero Section */
 .hero {
   min-height: 100vh;
@@ -518,7 +530,7 @@ section {
 }
 
 .project-main {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -553,22 +565,44 @@ section {
 }
 
 .project-description {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--bodyCa);
   line-height: 1.8;
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
+}
+
+.project-section {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  color: var(--headC);
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.section-title i {
+  color: var(--themeC);
+  font-size: 1.4rem;
 }
 
 .project-features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .feature-item {
   background: var(--contentB);
-  padding: 1.5rem;
+  padding: 1.8rem 1.5rem;
   border-radius: var(--card-radius);
   text-align: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
@@ -600,6 +634,183 @@ section {
   color: var(--bodyCa);
   line-height: 1.6;
   margin: 0;
+}
+
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.advantage-item {
+  background: linear-gradient(135deg, rgba(72, 45, 255, 0.05), rgba(118, 75, 162, 0.05));
+  padding: 2rem 1.5rem;
+  border-radius: var(--card-radius);
+  text-align: center;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.advantage-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--themeC), var(--secondary-color));
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+
+.advantage-item:hover::before {
+  transform: scaleX(1);
+}
+
+.advantage-item:hover {
+  transform: translateY(-8px);
+  border-color: var(--themeC);
+  box-shadow: 0 10px 30px rgba(72, 45, 255, 0.2);
+  background: linear-gradient(135deg, rgba(72, 45, 255, 0.08), rgba(118, 75, 162, 0.08));
+}
+
+.advantage-icon {
+  font-size: 3rem;
+  color: white;
+  background: linear-gradient(135deg, var(--themeC), var(--secondary-color));
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(72, 45, 255, 0.3);
+}
+
+.advantage-item h4 {
+  font-size: 1.15rem;
+  color: var(--headC);
+  margin-bottom: 0.7rem;
+  font-weight: 700;
+}
+
+.advantage-item p {
+  font-size: 14px;
+  color: var(--bodyCa);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Contact Section */
+.contact {
+  background: var(--bodyB);
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--light-color);
+  border-radius: var(--card-radius);
+  transition: var(--transition);
+}
+
+.contact-item:hover {
+  transform: translateX(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon {
+  font-size: 2.5rem;
+  color: white;
+  background: linear-gradient(135deg, var(--themeC), var(--secondary-color));
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(72, 45, 255, 0.3);
+}
+
+.contact-details h3 {
+  font-size: 1.2rem;
+  color: var(--headC);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.contact-details p,
+.contact-details a {
+  color: var(--bodyCa);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.contact-details a {
+  color: var(--themeC);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+
+.contact-form-wrapper {
+  background: var(--light-color);
+  padding: 2.5rem;
+  border-radius: var(--card-radius);
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-form-wrapper h3 {
+  font-size: 1.5rem;
+  color: var(--headC);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.form-description {
+  color: var(--bodyCa);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.btn-form {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 14px 32px;
+  font-size: 1rem;
+}
+
+.btn-form i {
+  font-size: 1.1rem;
 }
 
 /* Footer */
@@ -683,8 +894,18 @@ section {
   }
 
   .members-grid,
-  .projects-grid {
+  .project-features,
+  .advantages-grid {
     grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .advantage-item,
+  .feature-item {
+    padding: 1.5rem;
   }
 }
 
