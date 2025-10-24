@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cửa hàng Sách ABC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Cửa hàng Sách ABC</h1>
+        <nav>
+            <a href="#home">Trang chủ</a>
+            <a href="#products">Sản phẩm</a>
+            <a href="#contact">Liên hệ</a>
+        </nav>
+    </header>
+
+    <!-- Nội dung chính -->
+    <main>
+        <section>
+            <h2>Chào mừng đến với Cửa hàng Sách ABC</h2>
+            <p>Chúng tôi cung cấp các đầu sách chất lượng với giá cả phải chăng. Hãy khám phá bộ sưu tập phong phú của chúng tôi!</p>
+        </section>
+
+        <!-- Danh sách sản phẩm -->
+        <section id="products">
+            <h2>Sản phẩm nổi bật</h2>
+            
+            <!-- Tìm kiếm và thêm sản phẩm -->
+            <div class="product-controls">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+                    <button id="searchBtn">Tìm</button>
+                </div>
+                <button id="addProductBtn">Thêm sản phẩm</button>
+            </div>
+
+            <!-- Form thêm sản phẩm -->
+            <form id="addProductForm" class="hidden">
+                <h3>Thêm sản phẩm mới</h3>
+                <p id="errorMsg" class="error-message"></p>
+                
+                <label for="productName">Tên sản phẩm:</label>
+                <input type="text" id="productName" name="productName" required placeholder="Nhập tên sản phẩm">
+                
+                <label for="productImage">URL hình ảnh:</label>
+                <input type="url" id="productImage" name="productImage" placeholder="https://placehold.co/200x300?text=San+pham">
+                
+                <label for="productDescription">Mô tả:</label>
+                <textarea id="productDescription" name="productDescription" rows="3" required placeholder="Nhập mô tả sản phẩm (tối thiểu 10 ký tự)"></textarea>
+                
+                <label for="productPrice">Giá (VNĐ):</label>
+                <input type="number" id="productPrice" name="productPrice" required placeholder="250000" min="1">
+                
+                <div class="form-buttons">
+                    <button type="submit">Thêm</button>
+                    <button type="button" id="cancelBtn">Hủy</button>
+                </div>
+            </form>
+
+            <!-- Danh sách sản phẩm -->
+            <div id="productList">
+                <!-- Sản phẩm sẽ được tải từ LocalStorage bằng JavaScript -->
+            </div>
+        </section>
+
+        <!-- Form liên hệ -->
+        <section id="contact">
+            <h2>Liên hệ với chúng tôi</h2>
+            <p>Bạn có câu hỏi hoặc muốn đặt hàng? Hãy điền thông tin bên dưới!</p>
+            
+            <form>
+                <label for="name">Họ và tên:</label><br>
+                <input type="text" id="name" name="name" required placeholder="Nhập họ tên của bạn"><br><br>
+                
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required placeholder="example@email.com"><br><br>
+                
+                <label for="message">Nội dung:</label><br>
+                <textarea id="message" name="message" rows="5" cols="40" required placeholder="Nhập nội dung tin nhắn..."></textarea><br><br>
+                
+                <button type="submit">Gửi</button>
+            </form>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Cửa hàng Sách ABC. Địa chỉ: 123 Đường ABC, Quận XYZ, Hà Nội</p>
+        <p>Điện thoại: 0123-456-789 | Email: trieu.tq10@gmail.com</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
