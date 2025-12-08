@@ -77,6 +77,26 @@ app.get('/api/students/:id', async (req, res) => {
   }
 });
 
+// DELETE xóa học sinh theo ID
+app.delete('/api/students/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const deletedStudent = await Student.findByIdAndDelete(id);
+    
+    if (!deletedStudent) {
+      return res.status(404).json({ error: "Không tìm thấy học sinh" });
+    }
+    
+    res.json({ 
+      message: "Đã xóa học sinh thành công", 
+      id: deletedStudent._id,
+      name: deletedStudent.name 
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Route test
 app.get('/', (req, res) => {
   res.json({ message: 'Student Management API đang hoạt động' });

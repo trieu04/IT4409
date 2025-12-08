@@ -15,6 +15,9 @@ function HomePage() {
   const [stuClass, setStuClass] = useState("")
   const [isAdding, setIsAdding] = useState(false)
   const [successMessage, setSuccessMessage] = useState("")
+  
+  // State cho tìm kiếm
+  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
     fetchStudents()
@@ -76,6 +79,34 @@ function HomePage() {
   const handleEditStudent = (studentId) => {
     navigate(`/edit/${studentId}`)
   }
+
+  // Hàm xóa học sinh
+  const handleDeleteStudent = async (studentId, studentName) => {
+    if (!window.confirm(`Bạn có chắc muốn xóa học sinh "${studentName}"?`)) {
+      return
+    }
+
+    try {
+      const response = await axios.delete(`http://localhost:5000/api/students/${studentId}`)
+      console.log(response.data.message)
+      
+      // Cập nhật danh sách bằng cách loại bỏ học sinh đã xóa
+      setStudents(prevList => prevList.filter(s => s._id !== studentId))
+      
+      // Hiển thị thông báo thành công
+      setSuccessMessage(`Đã xóa học sinh "${studentName}" thành công!`)
+      setTimeout(() => setSuccessMessage(""), 3000)
+      
+    } catch (error) {
+      console.error("Lỗi khi xóa học sinh:", error)
+      alert("Không thể xóa học sinh. Vui lòng thử lại!")
+    }
+  }
+
+  // Lọc danh sách học sinh theo từ khóa tìm kiếm
+  const filteredStudents = students.filter(student =>
+    student.name.toLowerCase().includes(searchTerm.toLowerCase())
+  )
 
   if (loading) {
     return <div className="loading">Đang tải danh sách học sinh...</div>
@@ -150,11 +181,31 @@ function HomePage() {
 
         {/* Danh sách học sinh */}
         <section className="students-list-section">
-          <h2>Danh Sách Học Sinh ({students.length} học sinh)</h2>
+          <h2>
+            Danh Sách Học Sinh 
+            ({searchTerm ? `${filteredStudents.length}/${students.length}` : students.length} học sinh
+            {searchTerm ? ` - tìm kiếm: "${searchTerm}"` : ''})
+          </h2>
           
-          {students.length === 0 ? (
+          {/* Ô tìm kiếm */}
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="Tìm kiếm học sinh theo tên..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="search-input"
+            />
+          </div>
+          
+          {filteredStudents.length === 0 ? (
             <div className="no-students">
-              <p>Chưa có học sinh nào trong danh sách.</p>
+              <p>
+                {students.length === 0 
+                  ? "Chưa có học sinh nào trong danh sách." 
+                  : `Không tìm thấy học sinh nào với từ khóa "${searchTerm}".`
+                }
+              </p>
             </div>
           ) : (
             <div className="student-table-container">
@@ -168,18 +219,26 @@ function HomePage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {students.map((student) => (
+                  {filteredStudents.map((student) => (
                     <tr key={student._id}>
                       <td>{student.name}</td>
                       <td>{student.age}</td>
                       <td>{student.class}</td>
                       <td>
-                        <button 
-                          className="edit-btn"
-                          onClick={() => handleEditStudent(student._id)}
-                        >
-                          Sửa
-                        </button>
+                        <div className="action-buttons">
+                          <button 
+                            className="edit-btn"
+                            onClick={() => handleEditStudent(student._id)}
+                          >
+                            Sửa
+                          </button>
+                          <button 
+                            className="delete-btn"
+                            onClick={() => handleDeleteStudent(student._id, student.name)}
+                          >
+                            Xóa
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}

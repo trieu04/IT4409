@@ -92,23 +92,67 @@
   transition: background-color 0.2s;
 }
 
-/* Nút sửa trong bảng */
-.edit-btn {
+/* Ô tìm kiếm */
+.search-container {
+  margin-bottom: 1.5rem;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  background-color: white;
+}
+
+/* Nút hành động trong bảng */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.edit-btn, .delete-btn {
   padding: 0.5rem 1rem;
-  background-color: #e67e22;
-  color: white;
   border: none;
   border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.edit-btn {
+  background-color: #e67e22;
+  color: white;
 }
 
 .edit-btn:hover {
   background-color: #d35400;
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(230, 126, 34, 0.3);
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(231, 76, 60, 0.3);
 }
 
 /* Form thêm học sinh */
@@ -233,5 +277,19 @@
   .add-student-section,
   .students-list-section {
     padding: 1.5rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .edit-btn, .delete-btn {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .search-input {
+    max-width: 100%;
   }
 }
