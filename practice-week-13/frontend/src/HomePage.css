@@ -115,6 +115,26 @@
   background-color: white;
 }
 
+/* Nút sắp xếp trong header bảng */
+.sort-header-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.sort-header-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
 /* Nút hành động trong bảng */
 .action-buttons {
   display: flex;

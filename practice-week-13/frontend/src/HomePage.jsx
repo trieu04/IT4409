@@ -18,6 +18,9 @@ function HomePage() {
   
   // State cho tìm kiếm
   const [searchTerm, setSearchTerm] = useState("")
+  
+  // State cho sắp xếp
+  const [sortAsc, setSortAsc] = useState(true)
 
   useEffect(() => {
     fetchStudents()
@@ -107,6 +110,16 @@ function HomePage() {
   const filteredStudents = students.filter(student =>
     student.name.toLowerCase().includes(searchTerm.toLowerCase())
   )
+
+  // Sắp xếp danh sách học sinh theo tên
+  const sortedStudents = [...filteredStudents].sort((a, b) => {
+    const nameA = a.name.toLowerCase()
+    const nameB = b.name.toLowerCase()
+    
+    if (nameA < nameB) return sortAsc ? -1 : 1
+    if (nameA > nameB) return sortAsc ? 1 : -1
+    return 0
+  })
 
   if (loading) {
     return <div className="loading">Đang tải danh sách học sinh...</div>
@@ -198,7 +211,7 @@ function HomePage() {
             />
           </div>
           
-          {filteredStudents.length === 0 ? (
+          {sortedStudents.length === 0 ? (
             <div className="no-students">
               <p>
                 {students.length === 0 
@@ -212,14 +225,22 @@ function HomePage() {
               <table className="student-table">
                 <thead>
                   <tr>
-                    <th>Họ và Tên</th>
+                    <th>
+                      <button
+                        onClick={() => setSortAsc(prev => !prev)}
+                        className="sort-header-btn"
+                        title="Bấm để thay đổi thứ tự sắp xếp"
+                      >
+                        Họ và Tên {sortAsc ? '↑' : '↓'}
+                      </button>
+                    </th>
                     <th>Tuổi</th>
                     <th>Lớp</th>
                     <th>Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredStudents.map((student) => (
+                  {sortedStudents.map((student) => (
                     <tr key={student._id}>
                       <td>{student.name}</td>
                       <td>{student.age}</td>
