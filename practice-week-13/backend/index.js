@@ -44,6 +44,39 @@ app.post('/api/students', async (req, res) => {
   }
 });
 
+// PUT cập nhật học sinh theo ID
+app.put('/api/students/:id', async (req, res) => {
+  try {
+    const { name, age, class: studentClass } = req.body;
+    const updatedStudent = await Student.findByIdAndUpdate(
+      req.params.id,
+      { name, age, class: studentClass },
+      { new: true, runValidators: true }
+    );
+    
+    if (!updatedStudent) {
+      return res.status(404).json({ error: "Không tìm thấy học sinh" });
+    }
+    
+    res.json(updatedStudent);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// GET lấy thông tin học sinh theo ID
+app.get('/api/students/:id', async (req, res) => {
+  try {
+    const student = await Student.findById(req.params.id);
+    if (!student) {
+      return res.status(404).json({ error: "Không tìm thấy học sinh" });
+    }
+    res.json(student);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
 // Route test
 app.get('/', (req, res) => {
   res.json({ message: 'Student Management API đang hoạt động' });
